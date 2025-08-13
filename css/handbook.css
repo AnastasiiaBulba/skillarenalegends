@@ -1,0 +1,419 @@
+/* Player's Handbook Section Styles */
+.handbook {
+  padding: var(--section-padding);
+  background: linear-gradient(135deg, var(--background-color) 0%, #e8e8d0 100%);
+  position: relative;
+}
+
+.handbook-container {
+  max-width: var(--desktop);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.handbook-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.handbook-title {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+}
+
+.handbook-subtitle {
+  color: var(--light-text);
+  font-size: 1.25rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.handbook-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.handbook-rules,
+.handbook-tips {
+  flex: 1;
+  min-width: 300px;
+}
+
+.handbook-section-title {
+  color: var(--primary-color);
+  font-size: 1.75rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.handbook-section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  border-radius: 2px;
+}
+
+.rule-item,
+.tip-item {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 15px var(--shadow);
+  transition: var(--transition-fast);
+  border-left: 4px solid var(--accent-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.rule-item::before,
+.tip-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 215, 0, 0.05) 0%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: var(--transition-fast);
+}
+
+.rule-item:hover::before,
+.tip-item:hover::before {
+  opacity: 1;
+}
+
+.rule-item:hover,
+.tip-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-left-color: var(--primary-color);
+}
+
+.rule-title,
+.tip-title {
+  color: var(--primary-color);
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.rule-title::before,
+.tip-title::before {
+  content: "📋";
+  font-size: 1.5rem;
+}
+
+.tip-title::before {
+  content: "💡";
+}
+
+.rule-description,
+.tip-text {
+  color: var(--light-text);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* Handbook Interactive Elements */
+.handbook-interactive {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  margin-top: 3rem;
+  text-align: center;
+  box-shadow: 0 4px 20px var(--shadow);
+  border: 2px solid var(--accent-color);
+}
+
+.handbook-interactive h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.handbook-interactive p {
+  color: var(--light-text);
+  margin-bottom: 1.5rem;
+}
+
+.handbook-cta {
+  background: var(--primary-color);
+  color: var(--white);
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.handbook-cta:hover {
+  background: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Handbook Background Pattern */
+.handbook::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(
+      circle at 10% 20%,
+      rgba(139, 69, 19, 0.03) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(210, 105, 30, 0.03) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 215, 0, 0.02) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+}
+
+/* Handbook Animation */
+.rule-item,
+.tip-item {
+  opacity: 0;
+  transform: translateX(-30px);
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.rule-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.rule-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.rule-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.rule-item:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.tip-item:nth-child(1) {
+  animation-delay: 0.5s;
+}
+.tip-item:nth-child(2) {
+  animation-delay: 0.6s;
+}
+.tip-item:nth-child(3) {
+  animation-delay: 0.7s;
+}
+.tip-item:nth-child(4) {
+  animation-delay: 0.8s;
+}
+
+/* Handbook Hover Effects */
+.rule-item::after,
+.tip-item::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  width: 20px;
+  height: 20px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  transform: translateY(-50%) scale(0);
+  transition: var(--transition-fast);
+  opacity: 0.3;
+}
+
+.rule-item:hover::after,
+.tip-item:hover::after {
+  transform: translateY(-50%) scale(1);
+}
+
+/* Handbook Focus States */
+.rule-item:focus-within,
+.tip-item:focus-within {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 4px;
+}
+
+.handbook-cta:focus {
+  outline: 2px solid var(--white);
+  outline-offset: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .handbook {
+    padding: 2rem 0;
+  }
+
+  .handbook-header {
+    margin-bottom: 3rem;
+  }
+
+  .handbook-title {
+    font-size: 2rem;
+  }
+
+  .handbook-subtitle {
+    font-size: 1.125rem;
+  }
+
+  .handbook-content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .handbook-rules,
+  .handbook-tips {
+    min-width: auto;
+  }
+
+  .rule-item,
+  .tip-item {
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .rule-title,
+  .tip-title {
+    font-size: 1.125rem;
+  }
+
+  .handbook-interactive {
+    padding: 1.5rem;
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .handbook {
+    padding: 1.5rem 0;
+  }
+
+  .handbook-header {
+    margin-bottom: 2rem;
+  }
+
+  .handbook-title {
+    font-size: 1.75rem;
+  }
+
+  .handbook-subtitle {
+    font-size: 1rem;
+  }
+
+  .handbook-content {
+    gap: 1.5rem;
+  }
+
+  .rule-item,
+  .tip-item {
+    padding: 1rem;
+  }
+
+  .rule-title,
+  .tip-title {
+    font-size: 1rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .rule-title::before,
+  .tip-title::before {
+    font-size: 1.25rem;
+  }
+
+  .handbook-interactive {
+    padding: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  .handbook-cta {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Handbook Loading State */
+.handbook.loading {
+  opacity: 0.6;
+}
+
+.handbook.loading .rule-item,
+.handbook.loading .tip-item {
+  animation: none;
+  opacity: 0.6;
+}
+
+/* Handbook Theme Variations */
+.handbook.theme-dark {
+  background: linear-gradient(135deg, var(--text-color) 0%, #1a1a1a 100%);
+  color: var(--white);
+}
+
+.handbook.theme-dark .rule-item,
+.handbook.theme-dark .tip-item {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--white);
+}
+
+.handbook.theme-dark .rule-title,
+.handbook.theme-dark .tip-title {
+  color: var(--accent-color);
+}
+
+.handbook.theme-dark .rule-description,
+.handbook.theme-dark .tip-text {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.handbook.theme-dark .handbook-interactive {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--accent-color);
+}
+
+/* Handbook Print Styles */
+@media print {
+  .handbook {
+    background: white !important;
+    color: black !important;
+  }
+
+  .rule-item,
+  .tip-item {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    break-inside: avoid;
+  }
+
+  .handbook-interactive {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+}

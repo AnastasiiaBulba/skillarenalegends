@@ -1,0 +1,141 @@
+<section class="advantages" id="advantages">
+  <div class="advantages-container">
+    <div class="advantages-header animate-on-scroll">
+      <h2 class="advantages-title">Game Advantages</h2>
+      <p class="advantages-subtitle">Why Players Love Our Game</p>
+    </div>
+
+    <div class="advantages-grid">
+      <div class="advantage-card animate-on-scroll">
+        <div class="advantage-icon">🎮</div>
+        <h3 class="advantage-title">Two-Player Adventure</h3>
+        <p class="advantage-description">
+          Play with a friend in this cooperative adventure game. Teamwork is the
+          key to success!
+        </p>
+        <a href="#handbook" class="advantage-link">Learn More</a>
+      </div>
+
+      <div class="advantage-card animate-on-scroll">
+        <div class="advantage-icon">🧩</div>
+        <h3 class="advantage-title">Strategic Gameplay</h3>
+        <p class="advantage-description">
+          Plan your moves carefully. Every decision matters in this challenging
+          puzzle adventure.
+        </p>
+        <a href="#handbook" class="advantage-link">Learn More</a>
+      </div>
+
+      <div class="advantage-card animate-on-scroll">
+        <div class="advantage-icon">🎨</div>
+        <h3 class="advantage-title">Beautiful Graphics</h3>
+        <p class="advantage-description">
+          Immerse yourself in stunning 2D graphics with smooth animations and
+          vibrant colors.
+        </p>
+        <a href="#worldmap" class="advantage-link">Explore Worlds</a>
+      </div>
+
+      <div class="advantage-card animate-on-scroll">
+        <div class="advantage-icon">🏰</div>
+        <h3 class="advantage-title">Multiple Levels</h3>
+        <p class="advantage-description">
+          Explore various environments from mysterious forests to grand castles
+          with increasing difficulty.
+        </p>
+        <a href="#worldmap" class="advantage-link">View Map</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Advantages section interactions
+  document.addEventListener("DOMContentLoaded", function () {
+    const advantageCards = document.querySelectorAll(".advantage-card");
+
+    // Add intersection observer for animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      }
+    );
+
+    advantageCards.forEach((card) => {
+      observer.observe(card);
+
+      // Add click effect
+      card.addEventListener("click", function () {
+        this.style.transform = "scale(0.98)";
+        setTimeout(() => {
+          this.style.transform = "";
+        }, 150);
+      });
+
+      // Add hover sound effect (optional)
+      card.addEventListener("mouseenter", function () {
+        this.style.cursor = "pointer";
+      });
+    });
+
+    // Smooth scroll for advantage links
+    const advantageLinks = document.querySelectorAll(".advantage-link");
+    advantageLinks.forEach((link) => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute("href");
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      });
+    });
+
+    // Add parallax effect to background
+    window.addEventListener("scroll", function () {
+      const scrolled = window.pageYOffset;
+      const advantages = document.querySelector(".advantages");
+
+      if (advantages) {
+        const rate = scrolled * 0.1;
+        advantages.style.transform = `translateY(${rate}px)`;
+      }
+    });
+  });
+
+  // Add floating animation to advantage icons
+  const style = document.createElement("style");
+  style.textContent = `
+    @keyframes floatIcon {
+        0%, 100% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-5px);
+        }
+    }
+    
+    .advantage-icon {
+        animation: floatIcon 3s ease-in-out infinite;
+    }
+    
+    .advantage-card:nth-child(1) .advantage-icon { animation-delay: 0s; }
+    .advantage-card:nth-child(2) .advantage-icon { animation-delay: 0.5s; }
+    .advantage-card:nth-child(3) .advantage-icon { animation-delay: 1s; }
+    .advantage-card:nth-child(4) .advantage-icon { animation-delay: 1.5s; }
+`;
+  document.head.appendChild(style);
+</script>

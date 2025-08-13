@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mobile Menu Test</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/header.css" />
+    <style>
+      body {
+        padding: 20px;
+      }
+      .test-info {
+        background: #f0f0f0;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="test-info">
+      <h2>Mobile Menu Test</h2>
+      <p>
+        Resize your browser to mobile size or use browser dev tools to test
+        mobile menu.
+      </p>
+      <p>Click the burger menu button (☰) to open/close mobile navigation.</p>
+    </div>
+
+    <!-- Header Component -->
+    <header class="header">
+      <div class="header-container">
+        <!-- Logo -->
+        <a href="./index.html" class="logo">
+          <span>Skillarenalegends.com</span>
+        </a>
+
+        <!-- Navigation -->
+        <nav class="nav">
+          <a href="./index.html" class="nav-link">Home</a>
+          <a href="./tung-news.html" class="nav-link">News Hub</a>
+          <a href="./tung-contacts.html" class="nav-link">Contact Center</a>
+          <a href="./tung-disclaimer.html" class="nav-link">Disclaimer</a>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button
+          class="mobile-menu-btn"
+          id="mobile-menu-btn"
+          aria-label="Toggle mobile menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation -->
+      <div class="mobile-nav" id="mobile-nav">
+        <nav class="mobile-nav-content">
+          <a href="./index.html" class="mobile-nav-link">Home</a>
+          <a href="./tung-news.html" class="mobile-nav-link">News Hub</a>
+          <a href="./tung-contacts.html" class="mobile-nav-link"
+            >Contact Center</a
+          >
+          <a href="./tung-disclaimer.html" class="mobile-nav-link"
+            >Disclaimer</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main style="margin-top: 100px">
+      <h1>Test Content</h1>
+      <p>This is a test page to verify mobile menu functionality.</p>
+      <p>Make sure to test on mobile viewport size.</p>
+    </main>
+
+    <script>
+      // Simple mobile menu test
+      document.addEventListener("DOMContentLoaded", function () {
+        const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+        const mobileNav = document.getElementById("mobile-nav");
+
+        if (mobileMenuBtn && mobileNav) {
+          console.log("Mobile menu elements found");
+
+          mobileMenuBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            console.log("Mobile menu button clicked");
+
+            mobileNav.classList.toggle("active");
+            mobileMenuBtn.classList.toggle("active");
+            document.body.classList.toggle("mobile-menu-open");
+
+            console.log(
+              "Mobile nav active:",
+              mobileNav.classList.contains("active")
+            );
+          });
+
+          // Close mobile menu when clicking on links
+          const mobileNavLinks = mobileNav.querySelectorAll(".mobile-nav-link");
+          mobileNavLinks.forEach((link) => {
+            link.addEventListener("click", function () {
+              mobileNav.classList.remove("active");
+              mobileMenuBtn.classList.remove("active");
+              document.body.classList.remove("mobile-menu-open");
+              console.log("Mobile menu closed via link click");
+            });
+          });
+
+          // Close mobile menu when clicking outside
+          document.addEventListener("click", function (e) {
+            if (
+              !mobileMenuBtn.contains(e.target) &&
+              !mobileNav.contains(e.target)
+            ) {
+              mobileNav.classList.remove("active");
+              mobileMenuBtn.classList.remove("active");
+              document.body.classList.remove("mobile-menu-open");
+              console.log("Mobile menu closed via outside click");
+            }
+          });
+
+          console.log("Mobile menu initialized successfully");
+        } else {
+          console.error("Mobile menu elements not found");
+        }
+      });
+    </script>
+  </body>
+</html>

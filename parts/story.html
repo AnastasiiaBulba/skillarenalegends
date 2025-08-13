@@ -1,0 +1,190 @@
+<section class="story" id="story">
+  <div class="story-container">
+    <div class="story-header animate-on-scroll">
+      <h2 class="story-title">Story Expansion</h2>
+      <p class="story-subtitle">The Legend of Tungball and Labububall</p>
+    </div>
+
+    <div class="story-content animate-on-scroll">
+      <div class="story-text">
+        <p>
+          In a world where
+          <span class="story-highlight">fluffy balls</span> roam free, two brave
+          adventurers emerged from the peaceful village of
+          <span class="story-highlight">Bouncetown</span>.
+          <span class="story-highlight">Tungball</span>, with his golden shimmer
+          and quick reflexes, and
+          <span class="story-highlight">Labububall</span>, with his blue wisdom
+          and strategic mind, were chosen by the ancient prophecy to restore
+          peace to the realm.
+        </p>
+
+        <p>
+          The evil <span class="story-highlight">Shelled Monsters</span> had
+          stolen the <span class="story-highlight">Crystal of Harmony</span>,
+          plunging the world into chaos. Only by working together could our
+          heroes collect the scattered coins, find the ancient keys, and unlock
+          the castle where the crystal was hidden.
+        </p>
+
+        <p>
+          Their journey takes them through
+          <span class="story-highlight">enchanted forests</span> where trees
+          whisper ancient secrets,
+          <span class="story-highlight">mysterious caves</span> filled with
+          dangerous creatures, and finally to the
+          <span class="story-highlight">grand castle</span>
+          where the ultimate challenge awaits. Will they succeed in restoring
+          harmony to their world? Only time will tell...
+        </p>
+      </div>
+
+      <div class="story-characters">
+        <div class="character-card animate-on-scroll">
+          <div class="character-avatar">⚡</div>
+          <h3 class="character-name">Tungball</h3>
+          <p class="character-description">
+            The golden hero with lightning-fast reflexes and boundless energy.
+            His quick thinking and agility make him the perfect partner for any
+            adventure.
+          </p>
+        </div>
+
+        <div class="character-card animate-on-scroll">
+          <div class="character-avatar">🧠</div>
+          <h3 class="character-name">Labububall</h3>
+          <p class="character-description">
+            The wise blue strategist with deep knowledge of ancient lore. His
+            careful planning and wisdom guide the duo through every challenge.
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+<script>
+  // Story section interactions
+  document.addEventListener("DOMContentLoaded", function () {
+    const storyContent = document.querySelector(".story-content");
+    const characterCards = document.querySelectorAll(".character-card");
+
+    // Add intersection observer for animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      }
+    );
+
+    // Observe story content and character cards
+    if (storyContent) observer.observe(storyContent);
+    characterCards.forEach((card) => observer.observe(card));
+
+    // Add click effect to character cards
+    characterCards.forEach((card) => {
+      card.addEventListener("click", function () {
+        this.style.transform = "scale(0.98) translateY(0)";
+        setTimeout(() => {
+          this.style.transform = "";
+        }, 150);
+      });
+
+      // Add hover sound effect (optional)
+      card.addEventListener("mouseenter", function () {
+        this.style.cursor = "pointer";
+      });
+    });
+
+
+
+    // Add parallax effect to background
+    window.addEventListener("scroll", function () {
+      const scrolled = window.pageYOffset;
+      const story = document.querySelector(".story");
+
+      if (story) {
+        const rate = scrolled * 0.05;
+        story.style.transform = `translateY(${rate}px)`;
+      }
+    });
+
+    // Add highlight effects
+    const storyHighlights = document.querySelectorAll(".story-highlight");
+    storyHighlights.forEach((highlight) => {
+      highlight.addEventListener("mouseenter", function () {
+        this.style.transform = "translateY(-2px) scale(1.05)";
+      });
+
+      highlight.addEventListener("mouseleave", function () {
+        this.style.transform = "translateY(0) scale(1)";
+      });
+    });
+
+    // Add character avatar interactions
+    const characterAvatars = document.querySelectorAll(".character-avatar");
+    characterAvatars.forEach((avatar) => {
+      avatar.addEventListener("mouseenter", function () {
+        this.style.transform = "scale(1.1) rotate(5deg)";
+      });
+
+      avatar.addEventListener("mouseleave", function () {
+        this.style.transform = "scale(1) rotate(0deg)";
+      });
+    });
+  });
+
+  // Add floating animation to story elements
+  const style = document.createElement("style");
+  style.textContent = `
+    @keyframes floatStory {
+        0%, 100% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-3px);
+        }
+    }
+    
+    .story-content {
+        animation: floatStory 8s ease-in-out infinite;
+    }
+    
+    .character-card {
+        animation: floatStory 6s ease-in-out infinite;
+    }
+    
+    .character-card:nth-child(1) { animation-delay: 0s; }
+    .character-card:nth-child(2) { animation-delay: 3s; }
+    
+    .story-content:hover,
+    .character-card:hover {
+        animation-play-state: paused;
+    }
+    
+    /* Highlight pulse effect */
+    @keyframes highlightPulse {
+        0%, 100% {
+            background: linear-gradient(135deg, var(--accent-color), #FFED4E);
+        }
+        50% {
+            background: linear-gradient(135deg, #FFED4E, var(--accent-color));
+        }
+    }
+    
+    .story-highlight:hover {
+        animation: highlightPulse 1s ease-in-out infinite;
+    }
+`;
+  document.head.appendChild(style);
+</script>

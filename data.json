@@ -1,0 +1,249 @@
+{
+  "site": {
+    "title": "Skillarenalegends.com – Tung TungBall and Labububall",
+    "description": "You must survive in the world of balls. Two friends, Tungball and Labububall, need your help. They must collect all the coins, escape from the forest, find the key, and unlock the castle gate. Both friends must reach the castle safely. Reach the castle safely and earn the right to move on to the next level. Be careful — if the shelled monsters catch you, you'll lose.",
+    "keywords": "2 Player, 2 Player Games, 2D, Adventure, Arcade, Ball"
+  },
+  "navigation": {
+    "home": "Home",
+    "news": "News",
+    "contacts": "Contact",
+    "privacy": "Privacy Policy",
+    "cookies": "Cookie Policy",
+    "disclaimer": "Legal Disclaimer"
+  },
+  "banner": {
+    "title": "Welcome to Tung TungBall and Labububall",
+    "subtitle": "An Epic Adventure Awaits!",
+    "description": "Join two fluffy friends on their quest through enchanted forests and mysterious castles. Collect coins, avoid monsters, and unlock the secrets of this magical world.",
+    "cta": "Play Now"
+  },
+  "advantages": {
+    "title": "Game Advantages",
+    "subtitle": "Why Players Love Our Game",
+    "features": [
+      {
+        "title": "Two-Player Adventure",
+        "description": "Play with a friend in this cooperative adventure game. Teamwork is the key to success!",
+        "icon": "🎮"
+      },
+      {
+        "title": "Strategic Gameplay",
+        "description": "Plan your moves carefully. Every decision matters in this challenging puzzle adventure.",
+        "icon": "🧩"
+      },
+      {
+        "title": "Beautiful Graphics",
+        "description": "Immerse yourself in stunning 2D graphics with smooth animations and vibrant colors.",
+        "icon": "🎨"
+      },
+      {
+        "title": "Multiple Levels",
+        "description": "Explore various environments from mysterious forests to grand castles with increasing difficulty.",
+        "icon": "🏰"
+      }
+    ]
+  },
+  "handbook": {
+    "title": "Player's Handbook",
+    "subtitle": "Master the Game with These Essential Tips",
+    "rules": [
+      {
+        "title": "Basic Controls",
+        "description": "Use arrow keys or WASD to move your character. Both players must reach the castle to complete a level."
+      },
+      {
+        "title": "Collecting Coins",
+        "description": "Gather all coins in each level to unlock special rewards and progress further in the game."
+      },
+      {
+        "title": "Avoiding Enemies",
+        "description": "Stay away from shelled monsters. If they catch you, you'll lose and must restart the level."
+      },
+      {
+        "title": "Finding Keys",
+        "description": "Locate the hidden key to unlock the castle gate. Explore every corner of the level thoroughly."
+      }
+    ],
+    "tips": [
+      "Work together with your partner - communication is key!",
+      "Plan your route before making moves",
+      "Use the environment to your advantage",
+      "Don't rush - take your time to plan each step"
+    ]
+  },
+  "worldmap": {
+    "title": "World Map",
+    "subtitle": "Explore the Magical Realms",
+    "levels": [
+      {
+        "name": "Enchanted Forest",
+        "description": "Begin your journey in this mysterious forest filled with ancient trees and hidden paths.",
+        "difficulty": "Easy",
+        "features": [
+          "Coins scattered throughout",
+          "Simple enemy patterns",
+          "Basic puzzle elements"
+        ]
+      },
+      {
+        "name": "Mysterious Cave",
+        "description": "Navigate through dark caverns where danger lurks around every corner.",
+        "difficulty": "Medium",
+        "features": [
+          "Limited visibility",
+          "Complex enemy movements",
+          "Advanced puzzles"
+        ]
+      },
+      {
+        "name": "Castle Courtyard",
+        "description": "The final challenge before reaching the castle gates.",
+        "difficulty": "Hard",
+        "features": [
+          "Multiple enemies",
+          "Complex level design",
+          "Strategic gameplay required"
+        ]
+      },
+      {
+        "name": "Grand Castle",
+        "description": "The ultimate destination where your adventure reaches its climax.",
+        "difficulty": "Expert",
+        "features": ["Boss battles", "Ultimate challenges", "Epic rewards"]
+      }
+    ]
+  },
+  "community": {
+    "title": "Community Voices",
+    "subtitle": "What Our Players Say",
+    "reviews": [
+      {
+        "name": "Alex Thompson",
+        "text": "Amazing game! The two-player mode makes it perfect for playing with my brother. We've spent hours trying to beat the castle level!",
+        "rating": 5
+      },
+      {
+        "name": "Sarah Mitchell",
+        "text": "Love the puzzle elements and the beautiful graphics. The forest level is my favorite - so atmospheric!",
+        "rating": 5
+      },
+      {
+        "name": "Mike Chen",
+        "text": "Great strategic gameplay. You really need to think ahead and work together. Highly recommend for puzzle game fans!",
+        "rating": 4
+      },
+      {
+        "name": "Emma Wilson",
+        "text": "The castle theme is fantastic! I love how each level gets progressively more challenging. Can't wait for more content!",
+        "rating": 5
+      }
+    ]
+  },
+  "story": {
+    "title": "Story Expansion",
+    "subtitle": "The Legend of Tungball and Labububall",
+    "content": "In a world where fluffy balls roam free, two brave adventurers emerged from the peaceful village of Bouncetown. Tungball, with his golden shimmer and quick reflexes, and Labububall, with his blue wisdom and strategic mind, were chosen by the ancient prophecy to restore peace to the realm.\n\nThe evil Shelled Monsters had stolen the Crystal of Harmony, plunging the world into chaos. Only by working together could our heroes collect the scattered coins, find the ancient keys, and unlock the castle where the crystal was hidden.\n\nTheir journey takes them through enchanted forests where trees whisper ancient secrets, mysterious caves filled with dangerous creatures, and finally to the grand castle where the ultimate challenge awaits. Will they succeed in restoring harmony to their world? Only time will tell..."
+  },
+  "news": {
+    "title": "News Hub",
+    "subtitle": "Latest Updates and Adventures",
+    "categories": {
+      "gameProgress": {
+        "title": "Game Progress",
+        "articles": [
+          {
+            "title": "New Level System Released",
+            "date": "December 15, 2024",
+            "content": "We're excited to announce the release of our new level progression system! Players can now track their achievements and unlock special rewards as they advance through the game."
+          },
+          {
+            "title": "Performance Improvements",
+            "date": "December 10, 2024",
+            "content": "We've implemented several performance optimizations to ensure smooth gameplay across all devices. The game now runs faster and more efficiently than ever before."
+          }
+        ]
+      },
+      "adventureJournal": {
+        "title": "Adventure Journal",
+        "articles": [
+          {
+            "title": "The Secrets of the Enchanted Forest",
+            "date": "December 12, 2024",
+            "content": "Discover the hidden mysteries lurking in the depths of the Enchanted Forest. New players will find helpful tips, while veterans might uncover secrets they missed before."
+          },
+          {
+            "title": "Castle Chronicles: A Developer's Tale",
+            "date": "December 8, 2024",
+            "content": "Join us behind the scenes as we explore the design process behind the grand castle levels. Learn about the challenges and triumphs of creating the ultimate gaming experience."
+          }
+        ]
+      }
+    },
+    "additionalArticles": [
+      {
+        "title": "Community Tournament Announced",
+        "date": "December 20, 2024",
+        "content": "Join our first community tournament and compete with players from around the world! Experience intense competition, exclusive rewards, and the chance to prove your skills against the best players.",
+        "category": "gameProgress"
+      },
+      {
+        "title": "Winter Update Preview",
+        "date": "December 18, 2024",
+        "content": "Get a sneak peek at our upcoming winter-themed content and special events. New seasonal levels, festive decorations, and limited-time challenges await!",
+        "category": "adventureJournal"
+      },
+      {
+        "title": "New Character Skins Released",
+        "date": "December 16, 2024",
+        "content": "Unlock exclusive character skins for Tungball and Labububall! Customize your heroes with unique designs and special effects.",
+        "category": "gameProgress"
+      },
+      {
+        "title": "Behind the Scenes: Level Design",
+        "date": "December 14, 2024",
+        "content": "Take a journey through our level design process. Discover how we create challenging puzzles and engaging environments that keep players coming back for more.",
+        "category": "adventureJournal"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact Center",
+    "subtitle": "Get in Touch with Our Team",
+    "info": {
+      "email": "contact@skillarenalegends.com",
+      "phone": "+61 91 753 1234",
+      "address": "Level 2, 50 Carrington Street, Sydney NSW 2000, Australia"
+    },
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "message": "Your Message",
+      "submit": "Send Message",
+      "success": "Thank you! We will contact you soon.",
+      "validation": {
+        "nameRequired": "Please enter your name (letters only)",
+        "emailRequired": "Please enter a valid email address",
+        "messageRequired": "Please enter your message"
+      }
+    }
+  },
+  "legal": {
+    "disclaimer": {
+      "title": "Legal Disclaimer",
+      "content": "This website and the game 'Tung TungBall and Labububall' are provided for entertainment purposes only. While we strive to ensure accuracy and reliability, we make no warranties about the completeness, accuracy, or reliability of any information contained herein.\n\nGameplay may vary depending on device specifications and individual performance. We are not responsible for any data loss, technical issues, or other problems that may arise from using our services.\n\nBy using this website and playing our game, you agree to these terms and acknowledge that you do so at your own risk."
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "content": "At Skillarenalegends.com, we are committed to protecting your privacy. This policy explains how we collect, use, and safeguard your information when you visit our website or play our games.\n\nWe collect only essential information necessary to provide our services, such as game preferences and technical data for optimization purposes. We do not sell, trade, or otherwise transfer your personal information to third parties.\n\nWe use cookies to enhance your gaming experience and analyze website traffic. You can control cookie settings through your browser preferences.\n\nFor questions about this privacy policy, please contact us at contact@skillarenalegends.com."
+    },
+    "cookies": {
+      "title": "Cookie Policy",
+      "content": "Our website uses cookies to enhance your browsing experience and provide personalized content. Cookies are small text files stored on your device that help us remember your preferences and improve our services.\n\nWe use essential cookies for basic website functionality, performance cookies to analyze site usage, and preference cookies to remember your settings. You can control cookie settings through your browser preferences.\n\nBy continuing to use our website, you consent to our use of cookies as described in this policy. If you choose to disable cookies, some features may not function properly."
+    }
+  },
+  "footer": {
+    "copyright": "© Skillarenalegends.com",
+    "year": "2024"
+  }
+}

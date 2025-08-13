@@ -1,0 +1,90 @@
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-grid">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+                 <div class="footer-links-row">
+           <a href="./">Home</a>
+           <a href="./tung-news.html">News Hub</a>
+           <a href="./tung-contacts.html">Contact Center</a>
+           <a href="./tung-privacy.html">Privacy Policy</a>
+           <a href="./tung-cookies.html">Cookie Policy</a>
+           <a href="./tung-disclaimer.html">Legal Disclaimer</a>
+         </div>
+      </div>
+
+      <div class="footer-section">
+        <h3>Contact Information</h3>
+        <div class="footer-contact">
+          <div class="footer-contact-item">
+            <div class="footer-contact-icon">📧</div>
+            <a href="mailto:contact@skillarenalegends.com"
+              >contact@skillarenalegends.com</a
+            >
+          </div>
+          <div class="footer-contact-item">
+            <div class="footer-contact-icon">📞</div>
+            <a href="tel:+61917531234">+61 91 753 1234</a>
+          </div>
+          <div class="footer-contact-item">
+            <div class="footer-contact-icon">📍</div>
+            <span
+              >Level 2, 50 Carrington Street, Sydney NSW 2000, Australia</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; Skillarenalegends.com 2024-2025. All rights reserved.</p>
+      <p style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.6">
+        Tung TungBall and Labububall - An epic adventure awaits!
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Footer animations and interactions
+  document.addEventListener("DOMContentLoaded", function () {
+    // Add hover effects to social links
+    const socialLinks = document.querySelectorAll(".social-link");
+    socialLinks.forEach((link) => {
+      link.addEventListener("mouseenter", function () {
+        this.style.transform = "translateY(-3px) scale(1.1)";
+      });
+
+      link.addEventListener("mouseleave", function () {
+        this.style.transform = "translateY(0) scale(1)";
+      });
+    });
+
+    // Smooth scroll for footer links
+    const footerLinks = document.querySelectorAll('.footer-links a[href^="#"]');
+    footerLinks.forEach((link) => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute("href");
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      });
+    });
+
+    // Add current year to footer
+    const yearElement = document.querySelector(".footer-bottom p");
+    if (yearElement) {
+      const currentYear = new Date().getFullYear();
+      yearElement.innerHTML = yearElement.innerHTML.replace(
+        "2024",
+        currentYear
+      );
+    }
+  });
+</script>

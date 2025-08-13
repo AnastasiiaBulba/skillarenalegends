@@ -1,0 +1,166 @@
+<section class="handbook" id="handbook">
+  <div class="handbook-container">
+    <div class="handbook-header animate-on-scroll">
+      <h2 class="handbook-title">Player's Handbook</h2>
+      <p class="handbook-subtitle">Master the Game with These Essential Tips</p>
+    </div>
+
+    <div class="handbook-content">
+      <div class="handbook-rules">
+        <h3 class="handbook-section-title">Game Rules</h3>
+
+        <div class="rule-item animate-on-scroll">
+          <h4 class="rule-title">Basic Controls</h4>
+          <p class="rule-description">
+            Use arrow keys or WASD to move your character. Both players must
+            reach the castle to complete a level.
+          </p>
+        </div>
+
+        <div class="rule-item animate-on-scroll">
+          <h4 class="rule-title">Collecting Coins</h4>
+          <p class="rule-description">
+            Gather all coins in each level to unlock special rewards and
+            progress further in the game.
+          </p>
+        </div>
+
+        <div class="rule-item animate-on-scroll">
+          <h4 class="rule-title">Avoiding Enemies</h4>
+          <p class="rule-description">
+            Stay away from shelled monsters. If they catch you, you'll lose and
+            must restart the level.
+          </p>
+        </div>
+
+        <div class="rule-item animate-on-scroll">
+          <h4 class="rule-title">Finding Keys</h4>
+          <p class="rule-description">
+            Locate the hidden key to unlock the castle gate. Explore every
+            corner of the level thoroughly.
+          </p>
+        </div>
+      </div>
+
+      <div class="handbook-tips">
+        <h3 class="handbook-section-title">Pro Tips</h3>
+
+        <div class="tip-item animate-on-scroll">
+          <h4 class="tip-title">Teamwork is Key</h4>
+          <p class="tip-text">
+            Work together with your partner - communication is key! Coordinate
+            your moves and plan your strategy.
+          </p>
+        </div>
+
+        <div class="tip-item animate-on-scroll">
+          <h4 class="tip-title">Plan Your Route</h4>
+          <p class="tip-text">
+            Plan your route before making moves. Look ahead and anticipate enemy
+            movements.
+          </p>
+        </div>
+
+        <div class="tip-item animate-on-scroll">
+          <h4 class="tip-title">Use the Environment</h4>
+          <p class="tip-text">
+            Use the environment to your advantage. Some obstacles can help you
+            avoid enemies.
+          </p>
+        </div>
+
+        <div class="tip-item animate-on-scroll">
+          <h4 class="tip-title">Take Your Time</h4>
+          <p class="tip-text">
+            Don't rush - take your time to plan each step. Patience often leads
+            to success.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="handbook-interactive animate-on-scroll">
+      <h3>Adventure Awaits!</h3>
+      <p>
+        You've learned the essential strategies and tips. Now it's time to put your knowledge to the test! 
+        Embark on your magical journey with Tungball and Labububall, and discover the secrets of the enchanted castle.
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Handbook section interactions
+  document.addEventListener("DOMContentLoaded", function () {
+    const ruleItems = document.querySelectorAll(".rule-item");
+    const tipItems = document.querySelectorAll(".tip-item");
+
+    // Add intersection observer for animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateX(0)";
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      }
+    );
+
+    // Observe all items
+    [...ruleItems, ...tipItems].forEach((item) => {
+      observer.observe(item);
+
+      // Add click effect
+      item.addEventListener("click", function () {
+        this.style.transform = "scale(0.98) translateX(0)";
+        setTimeout(() => {
+          this.style.transform = "";
+        }, 150);
+      });
+
+      // Add hover sound effect (optional)
+      item.addEventListener("mouseenter", function () {
+        this.style.cursor = "pointer";
+      });
+    });
+
+
+
+    // Add parallax effect to background
+    window.addEventListener("scroll", function () {
+      const scrolled = window.pageYOffset;
+      const handbook = document.querySelector(".handbook");
+
+      if (handbook) {
+        const rate = scrolled * 0.05;
+        handbook.style.transform = `translateY(${rate}px)`;
+      }
+    });
+  });
+
+  // Add floating animation to section titles
+  const style = document.createElement("style");
+  style.textContent = `
+    @keyframes floatTitle {
+        0%, 100% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-3px);
+        }
+    }
+    
+    .handbook-section-title {
+        animation: floatTitle 4s ease-in-out infinite;
+    }
+    
+    .handbook-section-title:nth-child(1) { animation-delay: 0s; }
+    .handbook-section-title:nth-child(2) { animation-delay: 2s; }
+`;
+  document.head.appendChild(style);
+</script>

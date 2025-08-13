@@ -1,0 +1,322 @@
+<section class="news" id="news">
+  <div class="news-container">
+    <div class="news-header animate-on-scroll">
+      <h2 class="news-title">News Hub</h2>
+      <p class="news-subtitle">Latest Updates and Adventures</p>
+    </div>
+
+    <div class="news-categories">
+      <div class="news-category">
+        <h3 class="category-title">Game Progress</h3>
+        <div class="news-grid">
+          <article class="news-item animate-on-scroll">
+            <h4 class="news-item-title">New Level System Released</h4>
+            <time class="news-item-date">December 15, 2024</time>
+            <p class="news-item-content">
+              We're excited to announce the release of our new level progression
+              system! Players can now track their achievements and unlock
+              special rewards as they advance through the game.
+            </p>
+          </article>
+
+          <article class="news-item animate-on-scroll">
+            <h4 class="news-item-title">Performance Improvements</h4>
+            <time class="news-item-date">December 10, 2024</time>
+            <p class="news-item-content">
+              We've implemented several performance optimizations to ensure
+              smooth gameplay across all devices. The game now runs faster and
+              more efficiently than ever before.
+            </p>
+          </article>
+        </div>
+      </div>
+
+      <div class="news-category">
+        <h3 class="category-title">Adventure Journal</h3>
+        <div class="news-grid">
+          <article
+            class="news-item with-image animate-on-scroll"
+            style="background-image: url('./images/new-one.jpg')"
+          >
+            <h4 class="news-item-title">The Secrets of the Enchanted Forest</h4>
+            <time class="news-item-date">December 12, 2024</time>
+            <p class="news-item-content">
+              Discover the hidden mysteries lurking in the depths of the
+              Enchanted Forest. New players will find helpful tips, while
+              veterans might uncover secrets they missed before.
+            </p>
+          </article>
+
+          <article
+            class="news-item with-image animate-on-scroll"
+            style="background-image: url('./images/new-two.jpg')"
+          >
+            <h4 class="news-item-title">
+              Castle Chronicles: A Developer's Tale
+            </h4>
+            <time class="news-item-date">December 8, 2024</time>
+            <p class="news-item-content">
+              Join us behind the scenes as we explore the design process behind
+              the grand castle levels. Learn about the challenges and triumphs
+              of creating the ultimate gaming experience.
+            </p>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="news-interactive animate-on-scroll">
+      <h3>Stay Updated!</h3>
+      <p>
+        Don't miss out on the latest news and updates. Click below to load more
+        content and discover what's new!
+      </p>
+      <button class="read-more-btn">Read More</button>
+      <div class="loading-text">Loading more news...</div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // News section interactions
+  document.addEventListener("DOMContentLoaded", function () {
+    const newsItems = document.querySelectorAll(".news-item");
+
+    // Add intersection observer for animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateX(0)";
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      }
+    );
+
+    // Observe all news items
+    newsItems.forEach((item) => {
+      observer.observe(item);
+
+      // Add click effect
+      item.addEventListener("click", function () {
+        this.style.transform = "scale(0.98) translateX(0)";
+        setTimeout(() => {
+          this.style.transform = "";
+        }, 150);
+      });
+
+      // Add hover sound effect (optional)
+      item.addEventListener("mouseenter", function () {
+        this.style.cursor = "pointer";
+      });
+    });
+
+    // Add interactive elements
+    const readMoreBtn = document.querySelector(".read-more-btn");
+    if (readMoreBtn) {
+      readMoreBtn.addEventListener("mouseenter", function () {
+        this.style.transform = "translateY(-2px) scale(1.05)";
+      });
+
+      readMoreBtn.addEventListener("mouseleave", function () {
+        this.style.transform = "translateY(0) scale(1)";
+      });
+
+      // Add click functionality for loading more news
+      readMoreBtn.addEventListener("click", function () {
+        loadMoreNews();
+      });
+    }
+
+    // Add parallax effect to background
+    window.addEventListener("scroll", function () {
+      const scrolled = window.pageYOffset;
+      const news = document.querySelector(".news");
+
+      if (news) {
+        const rate = scrolled * 0.05;
+        news.style.transform = `translateY(${rate}px)`;
+      }
+    });
+
+    // Add background image effects for news items with images
+    const newsItemsWithImages = document.querySelectorAll(
+      ".news-item.with-image"
+    );
+    newsItemsWithImages.forEach((item) => {
+      const backgroundImage = item.style.backgroundImage;
+      if (backgroundImage) {
+        const imageUrl = backgroundImage
+          .replace("url(", "")
+          .replace(")", "")
+          .replace(/['"]/g, "");
+        item.style.setProperty("--bg-image", `url(${imageUrl})`);
+      }
+    });
+  });
+
+  // Function to load more news
+  async function loadMoreNews() {
+    const loadingText = document.querySelector(".loading-text");
+    const readMoreBtn = document.querySelector(".read-more-btn");
+    const newsGrids = document.querySelectorAll(".news-grid");
+
+    if (loadingText) {
+      loadingText.style.display = "block";
+    }
+
+    if (readMoreBtn) {
+      readMoreBtn.style.display = "none";
+    }
+
+    try {
+      // Load data from data.json
+      const response = await fetch("./data.json");
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      const additionalNews = data.news?.additionalArticles || [];
+
+      if (additionalNews.length === 0) {
+        // Fallback data if JSON doesn't have additional articles
+        const fallbackNews = [
+          {
+            title: "Community Tournament Announced",
+            date: "December 20, 2024",
+            content:
+              "Join our first community tournament and compete with players from around the world!",
+            category: "gameProgress",
+          },
+          {
+            title: "Winter Update Preview",
+            date: "December 18, 2024",
+            content:
+              "Get a sneak peek at our upcoming winter-themed content and special events.",
+            category: "adventureJournal",
+          },
+        ];
+
+        // Add to appropriate categories
+        fallbackNews.forEach((newsItem, index) => {
+          const targetGrid = newsGrids[index % newsGrids.length];
+          if (targetGrid) {
+            const newArticle = document.createElement("article");
+            newArticle.className = "news-item animate-on-scroll";
+            newArticle.innerHTML = `
+                      <h4 class="news-item-title">${newsItem.title}</h4>
+                      <time class="news-item-date">${newsItem.date}</time>
+                      <p class="news-item-content">${newsItem.content}</p>
+                  `;
+            targetGrid.appendChild(newArticle);
+
+            // Animate the new item
+            newArticle.style.opacity = "0";
+            newArticle.style.transform = "translateX(-30px)";
+
+            setTimeout(() => {
+              newArticle.style.opacity = "1";
+              newArticle.style.transform = "translateX(0)";
+            }, 100);
+          }
+        });
+      } else {
+        // Use data from JSON
+        additionalNews.forEach((newsItem, index) => {
+          const targetGrid = newsGrids[index % newsGrids.length];
+          if (targetGrid) {
+            const newArticle = document.createElement("article");
+            newArticle.className = "news-item animate-on-scroll";
+            newArticle.innerHTML = `
+                      <h4 class="news-item-title">${newsItem.title}</h4>
+                      <time class="news-item-date">${newsItem.date}</time>
+                      <p class="news-item-content">${newsItem.content}</p>
+                  `;
+            targetGrid.appendChild(newArticle);
+
+            // Animate the new item
+            newArticle.style.opacity = "0";
+            newArticle.style.transform = "translateX(-30px)";
+
+            setTimeout(() => {
+              newArticle.style.opacity = "1";
+              newArticle.style.transform = "translateX(0)";
+            }, 100);
+          }
+        });
+      }
+
+      // Hide loading text and show button again
+      if (loadingText) {
+        loadingText.style.display = "none";
+      }
+
+      if (readMoreBtn) {
+        readMoreBtn.style.display = "inline-block";
+      }
+    } catch (error) {
+      console.error("Failed to load additional news:", error);
+
+      // Show error message to user
+      const errorDiv = document.createElement("div");
+      errorDiv.className = "error-message";
+      errorDiv.textContent =
+        "Failed to load additional news. Please try again later.";
+      errorDiv.style.color = "#e74c3c";
+      errorDiv.style.textAlign = "center";
+      errorDiv.style.padding = "1rem";
+      errorDiv.style.marginTop = "1rem";
+
+      const newsInteractive = document.querySelector(".news-interactive");
+      if (newsInteractive) {
+        newsInteractive.appendChild(errorDiv);
+      }
+
+      // Show button again
+      if (readMoreBtn) {
+        readMoreBtn.style.display = "inline-block";
+      }
+      if (loadingText) {
+        loadingText.style.display = "none";
+      }
+    }
+  }
+
+  // Add floating animation to news items
+  const style = document.createElement("style");
+  style.textContent = `
+    @keyframes floatNews {
+        0%, 100% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-3px);
+        }
+    }
+    
+    .news-item {
+        animation: floatNews 6s ease-in-out infinite;
+    }
+    
+    .news-item:nth-child(1) { animation-delay: 0s; }
+    .news-item:nth-child(2) { animation-delay: 3s; }
+    
+    .news-item:hover {
+        animation-play-state: paused;
+    }
+    
+    /* Background image hover effect */
+    .news-item.with-image:hover {
+        background-image: var(--bg-image) !important;
+        background-size: cover !important;
+        background-position: center !important;
+    }
+`;
+  document.head.appendChild(style);
+</script>

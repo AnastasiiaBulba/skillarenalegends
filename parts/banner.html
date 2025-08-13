@@ -1,0 +1,79 @@
+<section class="banner" id="banner">
+  <div class="banner-content animate-on-scroll">
+    <h1 class="banner-title">Welcome to Tung TungBall and Labububall</h1>
+    <h2 class="banner-subtitle">An Epic Adventure Awaits!</h2>
+    <p class="banner-description">
+      Join two fluffy friends on their quest through enchanted forests and
+      mysterious castles. Collect coins, avoid monsters, and unlock the secrets
+      of this magical world.
+    </p>
+
+  </div>
+
+  <!-- Floating decorative elements -->
+  <div class="banner-floating">🏰</div>
+  <div class="banner-floating">⚡</div>
+  <div class="banner-floating">💎</div>
+
+  <!-- Scroll indicator -->
+  <div class="banner-scroll-indicator">
+    <div class="scroll-text">Scroll to explore</div>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<script>
+  // Banner interactions and animations
+  document.addEventListener("DOMContentLoaded", function () {
+    const banner = document.querySelector(".banner");
+    const bannerContent = document.querySelector(".banner-content");
+
+    if (banner && bannerContent) {
+      // Add parallax effect to background
+      window.addEventListener("scroll", function () {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.5;
+
+        if (banner) {
+          banner.style.transform = `translateY(${rate}px)`;
+        }
+      });
+
+      // Add floating animation to content
+      bannerContent.addEventListener("mouseenter", function () {
+        this.style.transform = "scale(1.02)";
+      });
+
+      bannerContent.addEventListener("mouseleave", function () {
+        this.style.transform = "scale(1)";
+      });
+
+
+    }
+
+    // Smooth scroll when clicking scroll indicator
+    const scrollIndicator = document.querySelector(".banner-scroll-indicator");
+    if (scrollIndicator) {
+      scrollIndicator.addEventListener("click", function () {
+        const nextSection = document.querySelector("#advantages");
+        if (nextSection) {
+          nextSection.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      });
+
+      // Add hover effect
+      scrollIndicator.addEventListener("mouseenter", function () {
+        this.style.transform = "translateX(-50%) scale(1.1)";
+      });
+
+      scrollIndicator.addEventListener("mouseleave", function () {
+        this.style.transform = "translateX(-50%) scale(1)";
+      });
+    }
+  });
+
+
+</script>

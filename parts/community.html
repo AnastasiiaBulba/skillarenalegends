@@ -1,0 +1,222 @@
+<section class="community" id="community">
+  <div class="community-container">
+    <div class="community-header animate-on-scroll">
+      <h2 class="community-title">Community Voices</h2>
+      <p class="community-subtitle">What Our Players Say</p>
+    </div>
+
+    <div class="community-grid">
+      <div class="review-card animate-on-scroll">
+        <div class="review-avatar">👤</div>
+        <h3 class="review-name">Alex Thompson</h3>
+        <p class="review-text">
+          "Amazing game! The two-player mode makes it perfect for playing with
+          my brother. We've spent hours trying to beat the castle level!"
+        </p>
+        <div class="review-rating">
+          <span class="star filled">⭐</span>
+          <span class="star filled">⭐</span>
+          <span class="star filled">⭐</span>
+          <span class="star filled">⭐</span>
+          <span class="star filled">⭐</span>
+        </div>
+      </div>
+
+      <div class="review-card animate-on-scroll">
+        <div class="review-avatar">👤</div>
+        <h3 class="review-name">Sarah Mitchell</h3>
+        <p class="review-text">
+          "Love the puzzle elements and the beautiful graphics. The forest level
+          is my favorite - so atmospheric!"
+        </p>
+        <div class="review-rating">
+          <span class="star filled">⭐</span>
+          <span class="star filled">⭐</span>
+          <span class="star filled">⭐</span>
+          <span class="star filled">⭐</span>
+          <span class="star filled">⭐</span>
+        </div>
+      </div>
+
+      <div class="review-card animate-on-scroll">
+        <div class="review-avatar">👤</div>
+        <h3 class="review-name">Mike Chen</h3>
+        <p class="review-text">
+          "Great strategic gameplay. You really need to think ahead and work
+          together. Highly recommend for puzzle game fans!"
+        </p>
+        <div class="review-rating">
+          <span class="star filled">⭐</span>
+          <span class="star filled">⭐</span>
+          <span class="star filled">⭐</span>
+          <span class="star filled">⭐</span>
+          <span class="star empty">⭐</span>
+        </div>
+      </div>
+
+      <div class="review-card animate-on-scroll">
+        <div class="review-avatar">👤</div>
+        <h3 class="review-name">Emma Wilson</h3>
+        <p class="review-text">
+          "The castle theme is fantastic! I love how each level gets
+          progressively more challenging. Can't wait for more content!"
+        </p>
+        <div class="review-rating">
+          <span class="star filled">⭐</span>
+          <span class="star filled">⭐</span>
+          <span class="star filled">⭐</span>
+          <span class="star filled">⭐</span>
+          <span class="star filled">⭐</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="community-interactive animate-on-scroll">
+      <h3>Connect & Share!</h3>
+      <p>
+        Join our vibrant community of players! Share your strategies, discover
+        new tips, and connect with fellow adventurers. Your experiences and
+        feedback help shape the future of our magical world.
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Community section interactions
+  document.addEventListener("DOMContentLoaded", function () {
+    const reviewCards = document.querySelectorAll(".review-card");
+
+    // Add intersection observer for animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      }
+    );
+
+    // Observe all review cards
+    reviewCards.forEach((card) => {
+      observer.observe(card);
+
+      // Add click effect
+      card.addEventListener("click", function () {
+        this.style.transform = "scale(0.98) translateY(0)";
+        setTimeout(() => {
+          this.style.transform = "";
+        }, 150);
+      });
+
+      // Add hover sound effect (optional)
+      card.addEventListener("mouseenter", function () {
+        this.style.cursor = "pointer";
+      });
+
+      // Add star rating interaction
+      const stars = this.querySelectorAll(".star");
+      stars.forEach((star, index) => {
+        star.addEventListener("mouseenter", function () {
+          // Highlight stars up to this one
+          stars.forEach((s, i) => {
+            if (i <= index) {
+              s.style.transform = "scale(1.2)";
+              s.style.color = "var(--accent-color)";
+            }
+          });
+        });
+
+        star.addEventListener("mouseleave", function () {
+          // Reset star appearance
+          stars.forEach((s, i) => {
+            s.style.transform = "scale(1)";
+            if (s.classList.contains("filled")) {
+              s.style.color = "var(--accent-color)";
+            } else {
+              s.style.color = "#ddd";
+            }
+          });
+        });
+      });
+    });
+
+    // Add parallax effect to background
+    window.addEventListener("scroll", function () {
+      const scrolled = window.pageYOffset;
+      const community = document.querySelector(".community");
+
+      if (community) {
+        const rate = scrolled * 0.05;
+        community.style.transform = `translateY(${rate}px)`;
+      }
+    });
+
+    // Add avatar rotation effect
+    const avatars = document.querySelectorAll(".review-avatar");
+    avatars.forEach((avatar) => {
+      avatar.addEventListener("mouseenter", function () {
+        this.style.transform = "scale(1.1) rotate(5deg)";
+      });
+
+      avatar.addEventListener("mouseleave", function () {
+        this.style.transform = "scale(1) rotate(0deg)";
+      });
+    });
+  });
+
+  // Add floating animation to review cards
+  const style = document.createElement("style");
+  style.textContent = `
+    @keyframes floatReview {
+        0%, 100% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-5px);
+        }
+    }
+    
+    .review-card {
+        animation: floatReview 6s ease-in-out infinite;
+    }
+    
+    .review-card:nth-child(1) { animation-delay: 0s; }
+    .review-card:nth-child(2) { animation-delay: 1.5s; }
+    .review-card:nth-child(3) { animation-delay: 3s; }
+    .review-card:nth-child(4) { animation-delay: 4.5s; }
+    
+    .review-card:hover {
+        animation-play-state: paused;
+    }
+    
+    /* Star twinkle effect */
+    @keyframes twinkle {
+        0%, 100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 0.7;
+            transform: scale(1.1);
+        }
+    }
+    
+    .star.filled {
+        animation: twinkle 2s ease-in-out infinite;
+    }
+    
+    .star.filled:nth-child(1) { animation-delay: 0s; }
+    .star.filled:nth-child(2) { animation-delay: 0.2s; }
+    .star.filled:nth-child(3) { animation-delay: 0.4s; }
+    .star.filled:nth-child(4) { animation-delay: 0.6s; }
+    .star.filled:nth-child(5) { animation-delay: 0.8s; }
+`;
+  document.head.appendChild(style);
+</script>

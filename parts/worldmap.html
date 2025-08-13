@@ -1,0 +1,206 @@
+<section class="worldmap" id="worldmap">
+  <div class="worldmap-container">
+    <div class="worldmap-header animate-on-scroll">
+      <h2 class="worldmap-title">World Map</h2>
+      <p class="worldmap-subtitle">Explore the Magical Realms</p>
+    </div>
+
+    <div class="worldmap-content">
+      <div class="level-card animate-on-scroll">
+        <div class="level-image">🌲</div>
+        <h3 class="level-name">Enchanted Forest</h3>
+        <p class="level-description">
+          Begin your journey in this mysterious forest filled with ancient trees
+          and hidden paths.
+        </p>
+        <span class="level-difficulty easy">Easy</span>
+        <ul class="level-features">
+          <li>Coins scattered throughout</li>
+          <li>Simple enemy patterns</li>
+          <li>Basic puzzle elements</li>
+        </ul>
+      </div>
+
+      <div class="level-card animate-on-scroll">
+        <div class="level-image">🕳️</div>
+        <h3 class="level-name">Mysterious Cave</h3>
+        <p class="level-description">
+          Navigate through dark caverns where danger lurks around every corner.
+        </p>
+        <span class="level-difficulty medium">Medium</span>
+        <ul class="level-features">
+          <li>Limited visibility</li>
+          <li>Complex enemy movements</li>
+          <li>Advanced puzzles</li>
+        </ul>
+      </div>
+
+      <div class="level-card animate-on-scroll">
+        <div class="level-image">🏛️</div>
+        <h3 class="level-name">Castle Courtyard</h3>
+        <p class="level-description">
+          The final challenge before reaching the castle gates.
+        </p>
+        <span class="level-difficulty hard">Hard</span>
+        <ul class="level-features">
+          <li>Multiple enemies</li>
+          <li>Complex level design</li>
+          <li>Strategic gameplay required</li>
+        </ul>
+      </div>
+
+      <div class="level-card animate-on-scroll">
+        <div class="level-image">🏰</div>
+        <h3 class="level-name">Grand Castle</h3>
+        <p class="level-description">
+          The ultimate destination where your adventure reaches its climax.
+        </p>
+        <span class="level-difficulty expert">Expert</span>
+        <ul class="level-features">
+          <li>Boss battles</li>
+          <li>Ultimate challenges</li>
+          <li>Epic rewards</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="worldmap-interactive animate-on-scroll">
+      <h3>Your Journey Awaits</h3>
+      <p>
+        From the mysterious Enchanted Forest to the grand Castle, each level
+        presents unique challenges and hidden treasures. Are you ready to
+        discover all the secrets this magical world has to offer?
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  // World Map section interactions
+  document.addEventListener("DOMContentLoaded", function () {
+    const levelCards = document.querySelectorAll(".level-card");
+
+    // Add intersection observer for animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      }
+    );
+
+    // Observe all level cards
+    levelCards.forEach((card) => {
+      observer.observe(card);
+
+      // Add click effect
+      card.addEventListener("click", function () {
+        this.style.transform = "scale(0.98) translateY(0)";
+        setTimeout(() => {
+          this.style.transform = "";
+        }, 150);
+      });
+
+      // Add hover sound effect (optional)
+      card.addEventListener("mouseenter", function () {
+        this.style.cursor = "pointer";
+      });
+
+      // Add level-specific interactions
+      const levelName = this.querySelector(".level-name").textContent;
+      const levelImage = this.querySelector(".level-image");
+
+      // Add special effects for different levels
+      if (levelName.includes("Forest")) {
+        levelImage.addEventListener("mouseenter", function () {
+          this.style.transform = "scale(1.1) rotate(5deg)";
+          this.textContent = "🌳";
+        });
+
+        levelImage.addEventListener("mouseleave", function () {
+          this.style.transform = "scale(1) rotate(0deg)";
+          this.textContent = "🌲";
+        });
+      } else if (levelName.includes("Cave")) {
+        levelImage.addEventListener("mouseenter", function () {
+          this.style.transform = "scale(1.1)";
+          this.style.filter = "brightness(1.2)";
+        });
+
+        levelImage.addEventListener("mouseleave", function () {
+          this.style.transform = "scale(1)";
+          this.style.filter = "brightness(1)";
+        });
+      } else if (levelName.includes("Castle")) {
+        levelImage.addEventListener("mouseenter", function () {
+          this.style.transform = "scale(1.1)";
+          this.style.filter = "drop-shadow(0 0 10px gold)";
+        });
+
+        levelImage.addEventListener("mouseleave", function () {
+          this.style.transform = "scale(1)";
+          this.style.filter = "none";
+        });
+      }
+    });
+
+    // Add parallax effect to background
+    window.addEventListener("scroll", function () {
+      const scrolled = window.pageYOffset;
+      const worldmap = document.querySelector(".worldmap");
+
+      if (worldmap) {
+        const rate = scrolled * 0.05;
+        worldmap.style.transform = `translateY(${rate}px)`;
+      }
+    });
+
+    // Add difficulty indicator animations
+    const difficultyBadges = document.querySelectorAll(".level-difficulty");
+    difficultyBadges.forEach((badge) => {
+      badge.addEventListener("mouseenter", function () {
+        this.style.transform = "scale(1.1)";
+        this.style.boxShadow = "0 4px 12px rgba(0,0,0,0.3)";
+      });
+
+      badge.addEventListener("mouseleave", function () {
+        this.style.transform = "scale(1)";
+        this.style.boxShadow = "none";
+      });
+    });
+  });
+
+  // Add floating animation to level images
+  const style = document.createElement("style");
+  style.textContent = `
+    @keyframes floatLevel {
+        0%, 100% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-8px);
+        }
+    }
+    
+    .level-image {
+        animation: floatLevel 4s ease-in-out infinite;
+    }
+    
+    .level-card:nth-child(1) .level-image { animation-delay: 0s; }
+    .level-card:nth-child(2) .level-image { animation-delay: 1s; }
+    .level-card:nth-child(3) .level-image { animation-delay: 2s; }
+    .level-card:nth-child(4) .level-image { animation-delay: 3s; }
+    
+    .level-card:hover .level-image {
+        animation-play-state: paused;
+    }
+`;
+  document.head.appendChild(style);
+</script>
