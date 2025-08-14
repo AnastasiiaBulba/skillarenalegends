@@ -170,6 +170,26 @@
   border-bottom: none;
 }
 
+/* Mobile Logo */
+.mobile-logo {
+  display: block;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 1.5rem 0;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--primary-color);
+  text-align: center;
+  transition: var(--transition-fast);
+}
+
+.mobile-logo:hover {
+  color: var(--secondary-color);
+  transform: scale(1.05);
+}
+
 /* Mobile Close Button */
 .mobile-close-btn {
   position: absolute;

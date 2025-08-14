@@ -182,7 +182,8 @@ class ComponentBuilder {
     const page = href.replace("./", "").replace(".html", "");
 
     if (page === "index" || page === "") {
-      // Stay on home page
+      // Navigate to home page
+      window.location.href = "./";
       return;
     }
 
@@ -385,6 +386,16 @@ class ComponentBuilder {
         document.body.classList.remove("mobile-menu-open");
       });
     });
+
+    // Close mobile menu when clicking on mobile logo
+    const mobileLogo = mobileNav.querySelector(".mobile-logo");
+    if (mobileLogo) {
+      mobileLogo.addEventListener("click", () => {
+        mobileNav.classList.remove("active");
+        mobileMenuBtn.classList.remove("active");
+        document.body.classList.remove("mobile-menu-open");
+      });
+    }
 
     // Close mobile menu when clicking close button
     const mobileCloseBtn = mobileNav.querySelector("#mobile-close-btn");
